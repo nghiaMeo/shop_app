@@ -4,7 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shop_app/core/configs/assets/app_vectors.dart';
 import 'package:shop_app/core/configs/theme/app_colors.dart';
 import 'package:shop_app/presentation/choose_mode/pages/choose_theme_page.dart';
-import 'package:shop_app/presentation/splash/bloc/splash_bloc.dart';
+import 'package:shop_app/presentation/home/pages/home_page.dart';
+import 'package:shop_app/presentation/splash/bloc/splash_cubit.dart';
 import 'package:shop_app/presentation/splash/bloc/splash_state.dart';
 
 class SplashPage extends StatelessWidget {
@@ -12,13 +13,21 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<SplashBloc, SplashState>(
-      listener: (BuildContext context, SplashState state) {
+    return BlocListener<SplashCubit, SplashState>(
+      listener: ( context,  state) {
         if (state is UnAuthenticated) {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               builder: (context) => const ChooseThemePage(),
+            ),
+          );
+        }
+        if (state is Authenticated) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const HomePage(),
             ),
           );
         }

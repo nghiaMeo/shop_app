@@ -28,33 +28,35 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const BasicAppbar(hideBack: true),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 40,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 40,
+          ),
+          child: CustomScrollView(slivers: [
+            SliverList.list(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildText(),
+                    const SizedBox(height: 20),
+                    _buildTextField(),
+                    const SizedBox(height: 20),
+                    _buildPressButton(context),
+                    const SizedBox(height: 20),
+                    RichTextWidget(
+                      title: "Don't you have an account? ",
+                      titleOnPress: 'Create One',
+                      onPage: SignupPage(),
+                    ),
+                  ],
+                ),
+              ],
+            )
+          ]),
         ),
-        child: CustomScrollView(slivers: [
-          SliverList.list(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildText(),
-                  const SizedBox(height: 20),
-                  _buildTextField(),
-                  const SizedBox(height: 20),
-                  _buildPressButton(context),
-                  const SizedBox(height: 20),
-                  RichTextWidget(
-                    title: "Don't you have an account? ",
-                    titleOnPress: 'Create One',
-                    onPage: SignupPage(),
-                  ),
-                ],
-              ),
-            ],
-          )
-        ]),
       ),
     );
   }

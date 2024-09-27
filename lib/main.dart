@@ -5,8 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shop_app/core/configs/theme/app_theme.dart';
 import 'package:shop_app/firebase_options.dart';
 import 'package:shop_app/presentation/choose_mode/bloc/theme_bloc.dart';
-import 'package:shop_app/presentation/splash/bloc/splash_bloc.dart';
-import 'package:shop_app/presentation/splash/bloc/splash_event.dart';
+import 'package:shop_app/presentation/splash/bloc/splash_cubit.dart';
 import 'package:shop_app/presentation/splash/pages/splash_page.dart';
 import 'package:shop_app/service_locator.dart';
 
@@ -35,7 +34,7 @@ class MyApp extends StatelessWidget {
           create: (context) => ThemeBloc(prefs),
         ),
         BlocProvider(
-          create: (context) => SplashBloc()..add(AppStarted()),
+          create: (context) => SplashCubit()..appStarted(),
         ),
       ],
       child: Builder(

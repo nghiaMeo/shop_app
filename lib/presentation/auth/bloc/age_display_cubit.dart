@@ -3,7 +3,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app/presentation/auth/bloc/state/age_display_state.dart';
 
-import '../../../domain/usecase/get_ages.dart';
+import '../../../domain/auth/usecase/get_ages_use_case.dart';
 import '../../../service_locator.dart';
 
 class AgesDisplayCubit extends Cubit<AgesDisplayState> {

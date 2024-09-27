@@ -1,4 +1,4 @@
-import 'dart:developer';
+
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,11 +8,11 @@ import 'package:shop_app/common/helper/bottomsheet/app_bottom_sheet.dart';
 import 'package:shop_app/common/helper/selection_mode/is_dark_mode.dart';
 import 'package:shop_app/common/widgets/button/basic_reactive_button.dart';
 import 'package:shop_app/core/configs/theme/app_colors.dart';
-import 'package:shop_app/domain/usecase/signup_use_case.dart';
 import 'package:shop_app/presentation/auth/bloc/gender_selection_cubit.dart';
 
 import '../../../common/widgets/appbar/app_bar_widget.dart';
 import '../../../data/auth/models/user_creation_req.dart';
+import '../../../domain/auth/usecase/signup_use_case.dart';
 import '../bloc/age_display_cubit.dart';
 import '../bloc/age_selection_cubit.dart';
 
@@ -27,59 +27,61 @@ class GenderAndAgePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BasicAppbar(),
-      body: MultiBlocProvider(
-          providers: [
-            BlocProvider(create: (context) => GenderSelectionCubit()),
-            BlocProvider(create: (context) => AgeSelectionCubit()),
-            BlocProvider(create: (context) => AgesDisplayCubit()),
-            BlocProvider(create: (context) => ButtonStateCubit())
-          ],
-          child: BlocListener<ButtonStateCubit, ButtonState>(
-            listener: (context, state) {
-              if (state is ButtonFailureState) {
-                var snackBar = SnackBar(
-                  content: Text(state.errorMessage),
-                  behavior: SnackBarBehavior.floating,
-                );
-                ScaffoldMessenger.of(context).showSnackBar(snackBar);
-              }
-            },
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 40,
+      body: SafeArea(
+        child: MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => GenderSelectionCubit()),
+              BlocProvider(create: (context) => AgeSelectionCubit()),
+              BlocProvider(create: (context) => AgesDisplayCubit()),
+              BlocProvider(create: (context) => ButtonStateCubit())
+            ],
+            child: BlocListener<ButtonStateCubit, ButtonState>(
+              listener: (context, state) {
+                if (state is ButtonFailureState) {
+                  var snackBar = SnackBar(
+                    content: Text(state.errorMessage),
+                    behavior: SnackBarBehavior.floating,
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                }
+              },
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 40,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _buildText(
+                            title: 'Tell us About yourself',
+                            fontSize: 32,
+                            fontWeight: FontWeight.w500),
+                        SizedBox(height: 20),
+                        _buildText(
+                            title: 'Who do you shop for ?',
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500),
+                        const SizedBox(height: 20),
+                        _genders(context),
+                        const SizedBox(height: 20),
+                        _buildText(
+                            title: 'How Old are you ?',
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500),
+                        SizedBox(height: 20),
+                        _age(context),
+                      ],
+                    ),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _buildText(
-                          title: 'Tell us About yourself',
-                          fontSize: 32,
-                          fontWeight: FontWeight.w500),
-                      SizedBox(height: 20),
-                      _buildText(
-                          title: 'Who do you shop for ?',
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500),
-                      const SizedBox(height: 20),
-                      _genders(context),
-                      const SizedBox(height: 20),
-                      _buildText(
-                          title: 'How Old are you ?',
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500),
-                      SizedBox(height: 20),
-                      _age(context),
-                    ],
-                  ),
-                ),
-                Spacer(),
-                _buildFinishButton(context)
-              ],
-            ),
-          )),
+                  Spacer(),
+                  _buildFinishButton(context)
+                ],
+              ),
+            )),
+      ),
     );
   }
 

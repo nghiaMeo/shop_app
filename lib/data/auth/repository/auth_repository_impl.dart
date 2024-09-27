@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:shop_app/data/auth/models/user_creation_req.dart';
+import 'package:shop_app/data/auth/models/user_model.dart';
 import 'package:shop_app/data/auth/models/user_signin_req.dart';
 import 'package:shop_app/data/auth/source/auth_firebase_service.dart';
 import 'package:shop_app/domain/auth/repository/auth_repository.dart';
@@ -20,15 +19,20 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
-  Future<Either> getUser() {
-    // TODO: implement getUser
-    throw UnimplementedError();
+  Future<Either> getUser() async {
+    var user = await sl<AuthFirebaseService>().getUser();
+    return user.fold((error) {
+      return Left(error);
+    }, (data) {
+      return Right(
+        UserModel.fromMap(data).toEntity(),
+      );
+    });
   }
 
   @override
-  Future<bool> isLoggedIn() {
-    // TODO: implement isLoggedIn
-    throw UnimplementedError();
+  Future<bool> isLoggedIn() async {
+    return await sl<AuthFirebaseService>().isLoggedIn();
   }
 
   @override

@@ -6,7 +6,7 @@ import 'package:shop_app/common/helper/navigator/app_navigator.dart';
 import 'package:shop_app/common/widgets/appbar/app_bar_widget.dart';
 import 'package:shop_app/common/widgets/button/basic_reactive_button.dart';
 import 'package:shop_app/presentation/auth/pages/password_reset_email_page.dart';
-import '../../../domain/usecase/rest_password_email_use_case.dart';
+import '../../../domain/auth/usecase/rest_password_email_use_case.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
@@ -29,31 +29,33 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BasicAppbar(),
-      body: BlocProvider(
-        create: (context) => ButtonStateCubit(),
-        child: BlocListener<ButtonStateCubit, ButtonState>(
-          listener: (context, state) {
-            if (state is ButtonFailureState) {
-              var snackBar = SnackBar(
-                  content: Text(state.errorMessage),
-                  behavior: SnackBarBehavior.floating);
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
-            }
-            if (state is ButtonSuccessState) {
-              AppNavigator.push(context, PasswordResetEmailPage());
-            }
-          },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildText(),
-                const SizedBox(height: 20),
-                _buildTextField(),
-                const SizedBox(height: 20),
-                _buildPressButton(context),
-              ],
+      body: SafeArea(
+        child: BlocProvider(
+          create: (context) => ButtonStateCubit(),
+          child: BlocListener<ButtonStateCubit, ButtonState>(
+            listener: (context, state) {
+              if (state is ButtonFailureState) {
+                var snackBar = SnackBar(
+                    content: Text(state.errorMessage),
+                    behavior: SnackBarBehavior.floating);
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              }
+              if (state is ButtonSuccessState) {
+                AppNavigator.push(context, PasswordResetEmailPage());
+              }
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildText(),
+                  const SizedBox(height: 20),
+                  _buildTextField(),
+                  const SizedBox(height: 20),
+                  _buildPressButton(context),
+                ],
+              ),
             ),
           ),
         ),

@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shop_app/presentation/auth/pages/sign_in_page.dart';
 import 'package:shop_app/presentation/choose_mode/bloc/theme_bloc.dart';
+import 'package:shop_app/presentation/home/pages/home_page.dart';
 
 import '../../../common/widgets/button/basic_app_button.dart';
 import '../../../core/configs/assets/app_vectors.dart';
@@ -34,7 +35,7 @@ class ChooseThemePage extends StatelessWidget {
                   'Choose mode',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: AppColors.primary,
                     fontSize: 19,
                   ),
                 ),
@@ -123,8 +124,9 @@ class ChooseThemePage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                          const SignInPage(),
+                          builder: (BuildContext context) {
+                          return const SignInPage();
+                        }
                         ),
                       );
                     },

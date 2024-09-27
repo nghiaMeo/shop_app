@@ -33,49 +33,51 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BasicAppbar(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Stack(
-          children: [
-            _buildText(),
-            SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 60),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildTextField(
-                      hintText: 'First Name',
-                      controller: _firstNameController,
-                    ),
-                    SizedBox(height: 20),
-                    _buildTextField(
-                      hintText: 'Last Name',
-                      controller: _lastNameController,
-                    ),
-                    SizedBox(height: 20),
-                    _buildTextField(
-                      hintText: 'Email Address',
-                      controller: _emailController,
-                    ),
-                    SizedBox(height: 20),
-                    _buildTextField(
-                      hintText: 'Password',
-                      isPassword: true,
-                      controller: _passwordController,
-                    ),
-                    SizedBox(height: 20),
-                    _buildPressButton(context),
-                    SizedBox(height: 20),
-                    RichTextWidget(
-                        title: "Forgot Password? ",
-                        titleOnPress: 'Reset',
-                        onPage: ForgotPasswordPage())
-                  ],
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Stack(
+            children: [
+              _buildText(),
+              SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 60),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildTextField(
+                        hintText: 'First Name',
+                        controller: _firstNameController,
+                      ),
+                      SizedBox(height: 20),
+                      _buildTextField(
+                        hintText: 'Last Name',
+                        controller: _lastNameController,
+                      ),
+                      SizedBox(height: 20),
+                      _buildTextField(
+                        hintText: 'Email Address',
+                        controller: _emailController,
+                      ),
+                      SizedBox(height: 20),
+                      _buildTextField(
+                        hintText: 'Password',
+                        isPassword: true,
+                        controller: _passwordController,
+                      ),
+                      SizedBox(height: 20),
+                      _buildPressButton(context),
+                      SizedBox(height: 20),
+                      RichTextWidget(
+                          title: "Forgot Password? ",
+                          titleOnPress: 'Reset',
+                          onPage: ForgotPasswordPage())
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

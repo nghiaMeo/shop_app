@@ -14,23 +14,25 @@ class PasswordResetEmailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // appBar: BasicAppbar(hideBack: true),
-      body: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 40,
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Spacer(),
-              _buildSvgSentEmail(),
-              SizedBox(height: 20),
-              _buildText(),
-              SizedBox(height: 20),
-              _buildPressButton(context),
-              Spacer(),
-            ],
-          )),
+      body: SafeArea(
+        child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 40,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Spacer(),
+                _buildSvgSentEmail(),
+                SizedBox(height: 20),
+                _buildText(),
+                SizedBox(height: 20),
+                _buildPressButton(context),
+                Spacer(),
+              ],
+            )),
+      ),
     );
   }
 
