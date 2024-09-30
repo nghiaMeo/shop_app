@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../../domain/product/entities/product.dart';
-import '../models/product.dart';
+import '../../../domain/product/entities/product_entity.dart';
+import '../models/product_model.dart';
 
 abstract class ProductFirebaseService {
   Future<Either> getTopSelling();

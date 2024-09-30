@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 
 import '../../../core/usecase/usecase.dart';
 import '../../../service_locator.dart';
-import '../repository/category.dart';
+import '../repository/category_repository.dart';
 
 class GetCategoriesUseCase implements UseCase<Either,dynamic> {
 

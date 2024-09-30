@@ -1,25 +1,29 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:shop_app/presentation/search/pages/search_page.dart';
 
-import '../../../common/helper/navigator/app_navigator.dart';
+import '../../../common/bloc/product/products_display_cubit.dart';
 import '../../../core/configs/assets/app_vectors.dart';
 
-class SearchFieldWidget extends StatelessWidget {
-  const SearchFieldWidget({super.key});
+class SearchField extends StatelessWidget {
+  SearchField({super.key});
+
+  final TextEditingController textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-          horizontal: 16
+          horizontal: 8
       ),
       child: TextField(
-        readOnly: true,
-        onTap: (){
-          AppNavigator.push(context,  SearchPage());
+        controller: textEditingController,
+        onChanged: (value){
+          if (value.isEmpty) {
+            context.read<ProductsDisplayCubit>().displayInitial();
+          } else {
+            context.read<ProductsDisplayCubit>().displayProducts(params: value);
+          }
         },
         decoration: InputDecoration(
             contentPadding: const EdgeInsets.all(12),
@@ -29,7 +33,7 @@ class SearchFieldWidget extends StatelessWidget {
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(50)
             ),
-            prefixIcon: SvgPicture.asset(
+            prefixIcon:  SvgPicture.asset(
               AppVectors.search,
               fit: BoxFit.none,
             ),

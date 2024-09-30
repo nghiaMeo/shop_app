@@ -5,6 +5,7 @@ import 'package:shop_app/common/helper/selection_mode/is_dark_mode.dart';
 import 'package:shop_app/core/configs/assets/app_images.dart';
 import 'package:shop_app/core/configs/assets/app_vectors.dart';
 import 'package:shop_app/domain/auth/entity/user_entity.dart';
+import 'package:shop_app/presentation/choose_mode/pages/choose_theme_page.dart';
 import 'package:shop_app/presentation/home/bloc/user_info_display_cubit.dart';
 import 'package:shop_app/presentation/home/bloc/user_info_display_state.dart';
 
@@ -82,7 +83,7 @@ class HeaderWidget extends StatelessWidget {
   Widget _buildButtonCard(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        AppNavigator.push(context, Container());
+        AppNavigator.push(context, ChooseThemePage());
       },
       child: Container(
         height: 40,

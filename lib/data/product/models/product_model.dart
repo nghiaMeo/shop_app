@@ -1,8 +1,8 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../../../domain/product/entities/product.dart';
-import 'color.dart';
+import '../../../domain/product/entities/product_entity.dart';
+import 'product_color_model.dart';
 
 class ProductModel {
   final String categoryId;

@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'color.dart';
+import 'package:shop_app/domain/product/entities/product_color_entity.dart';
 
 class ProductEntity {
   final String categoryId;

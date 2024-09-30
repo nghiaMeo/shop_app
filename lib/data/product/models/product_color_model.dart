@@ -1,50 +1,37 @@
-
-import '../../../domain/product/entities/color.dart';
+import '../../../domain/product/entities/product_color_entity.dart';
 
 class ProductColorModel {
-
   final String title;
-  final List<int> rgb;
+  final String hexCode;
 
   ProductColorModel({
     required this.title,
-    required this.rgb,
+    required this.hexCode,
   });
-
-  
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'title': title,
-      'rgb': rgb,
+      'hexCode': hexCode,
     };
   }
 
   factory ProductColorModel.fromMap(Map<String, dynamic> map) {
     return ProductColorModel(
       title: map['title'] as String,
-      rgb: List < int > .from(
-        map['rgb'].map((e) => e),
-      ),
+      hexCode: map['hexCode'] as String,
     );
   }
-
 }
 
 extension ProductColorXModel on ProductColorModel {
   ProductColorEntity toEntity() {
-    return ProductColorEntity(
-      title: title,
-      rgb: rgb
-    );
+    return ProductColorEntity(title: title, hexCode: hexCode);
   }
 }
 
 extension ProductColorXEntity on ProductColorEntity {
   ProductColorModel fromEntity() {
-    return ProductColorModel(
-      title: title,
-      rgb: rgb
-    );
+    return ProductColorModel(title: title, hexCode: hexCode);
   }
 }

@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../domain/product/entities/product.dart';
-import '../../../domain/product/repository/product.dart';
+import '../../../domain/product/entities/product_entity.dart';
+import '../../../domain/product/repository/product_repository.dart';
 import '../../../service_locator.dart';
-import '../models/product.dart';
+import '../models/product_model.dart';
 import '../source/product_firebase_service.dart';
 
 class ProductRepositoryImpl extends ProductRepository {

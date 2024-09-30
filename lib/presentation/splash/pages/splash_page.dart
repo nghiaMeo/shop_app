@@ -19,7 +19,7 @@ class SplashPage extends StatelessWidget {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const ChooseThemePage(),
+              builder: (context) => ChooseThemePage(),
             ),
           );
         }
