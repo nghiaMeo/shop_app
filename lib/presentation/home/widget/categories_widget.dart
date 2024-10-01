@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app/common/bloc/categories/categories_display_cubit.dart';
@@ -7,6 +6,8 @@ import 'package:shop_app/common/helper/images/image_display_helper.dart';
 import 'package:shop_app/common/helper/navigator/app_navigator.dart';
 import 'package:shop_app/domain/category/entity/category_entity.dart';
 import 'package:shop_app/presentation/all_categories/pages/detail_categories_page.dart';
+
+import '../../category_products/pages/category_products_page.dart';
 
 class CategoriesWidget extends StatelessWidget {
   const CategoriesWidget({super.key});
@@ -72,17 +73,26 @@ class CategoriesWidget extends StatelessWidget {
           itemBuilder: (context, index) {
             return Column(
               children: [
-                Container(
-                  height: 60,
-                  width: 60,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white,
-                    image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: NetworkImage(
-                        ImageDisplayHelper.generateCategoryImageURL(
-                            categories[index].image),
+                GestureDetector(
+                  onTap: () {
+                    AppNavigator.push(
+                        context,
+                        CategoryProductsPage(
+                          categoryEntity: categories[index],
+                        ));
+                  },
+                  child: Container(
+                    height: 60,
+                    width: 60,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                      image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: NetworkImage(
+                          ImageDisplayHelper.generateCategoryImageURL(
+                              categories[index].image),
+                        ),
                       ),
                     ),
                   ),

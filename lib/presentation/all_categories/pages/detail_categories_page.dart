@@ -26,11 +26,11 @@ class DetailCategoriesPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _shopByCategories(),
+              _buildTextShopByCategories(),
               const SizedBox(
                 height: 10,
               ),
-              _categories()
+              _buildCategories()
             ],
           ),
         ),
@@ -38,14 +38,14 @@ class DetailCategoriesPage extends StatelessWidget {
     );
   }
 
-  Widget _shopByCategories() {
+  Widget _buildTextShopByCategories() {
     return const Text(
       'Shop by Categories',
       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
     );
   }
 
-  Widget _categories() {
+  Widget _buildCategories() {
     return BlocBuilder<CategoriesDisplayCubit, CategoriesDisplayState>(
       builder: (context, state) {
         if (state is CategoriesLoading) {

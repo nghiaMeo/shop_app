@@ -3,6 +3,7 @@ import 'package:shop_app/common/helper/selection_mode/is_dark_mode.dart';
 
 import '../../../core/configs/theme/app_colors.dart';
 import '../../../domain/product/entities/product_entity.dart';
+import '../../../presentation/product_detail/pages/product_detail_page.dart';
 import '../../helper/images/image_display_helper.dart';
 import '../../helper/navigator/app_navigator.dart';
 
@@ -15,11 +16,11 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // AppNavigator.push(
-        //     context,
-        //     ProductDetailPage(
-        //       productEntity: productEntity,
-        //     ));
+        AppNavigator.push(
+            context,
+            ProductDetailPage(
+              productEntity: productEntity,
+            ));
       },
       child: Container(
         width: 180,
