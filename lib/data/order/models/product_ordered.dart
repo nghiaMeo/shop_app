@@ -1,4 +1,4 @@
-import '../../../domain/order/entities/product_ordered.dart';
+import '../../../domain/order/entities/product_ordered_entity.dart';
 
 class ProductOrderedModel {
   final String productId;

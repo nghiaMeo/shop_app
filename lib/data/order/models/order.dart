@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:shop_app/data/order/models/product_ordered.dart';
 
-import '../../../domain/order/entities/order.dart';
+import '../../../domain/order/entities/order_entity.dart';
 import 'order_status.dart';
 
 class OrderModel {

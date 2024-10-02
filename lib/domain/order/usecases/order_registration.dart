@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import '../../../core/usecase/usecase.dart';
 import '../../../data/order/models/order_registration_req.dart';
 import '../../../service_locator.dart';
-import '../repository/order.dart';
+import '../repository/order_repository.dart';
 
 class OrderRegistrationUseCase implements UseCase<Either,OrderRegistrationReq> {
   @override

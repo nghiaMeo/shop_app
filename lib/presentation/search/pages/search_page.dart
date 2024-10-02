@@ -11,7 +11,7 @@ import '../../../core/configs/assets/app_vectors.dart';
 import '../../../domain/product/entities/product_entity.dart';
 import '../../../domain/product/usecases/get_products_by_title.dart';
 import '../../../service_locator.dart';
-import '../widget/search_field.dart';
+import '../widgets/search_field.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});

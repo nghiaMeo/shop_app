@@ -9,6 +9,7 @@ import '../../../common/helper/product/product_price_helper.dart';
 import '../../../common/widgets/button/basic_reactive_button.dart';
 import '../../../data/order/models/add_to_cart_req.dart';
 import '../../../domain/order/usecases/add_to_cart.dart';
+import '../../cart/pages/cart_page.dart';
 import '../bloc/product_color_selection_cubit.dart';
 import '../bloc/product_quantity_cubit.dart';
 import '../bloc/product_size_selection_cubit.dart';
@@ -23,7 +24,7 @@ class AddBagWidget extends StatelessWidget {
     return BlocListener<ButtonStateCubit, ButtonState>(
       listener: (context, state) {
         if (state is ButtonSuccessState) {
-          // AppNavigator.push(context, const CartPage());
+          AppNavigator.push(context, CartPage());
         }
         if (state is ButtonFailureState) {
           var snackBar = SnackBar(
@@ -38,8 +39,8 @@ class AddBagWidget extends StatelessWidget {
         child: BasicReactiveButton(
             onPressed: () {
               context.read<ButtonStateCubit>().execute(
-                  useCase: AddToCartUseCase(),
-                  params: AddToCartReq(
+                    useCase: AddToCartUseCase(),
+                    params: AddToCartReq(
                       productId: productEntity.productId,
                       productTitle: productEntity.title,
                       productQuantity:
@@ -57,7 +58,9 @@ class AddBagWidget extends StatelessWidget {
                               productEntity) *
                           context.read<ProductQuantityCubit>().state,
                       productImage: productEntity.images[0],
-                      createdDate: DateTime.now().toString()));
+                      createdDate: DateTime.now().toString(),
+                    ),
+                  );
             },
             content: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

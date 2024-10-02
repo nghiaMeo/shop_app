@@ -5,9 +5,11 @@ import 'package:shop_app/common/helper/selection_mode/is_dark_mode.dart';
 import 'package:shop_app/core/configs/assets/app_images.dart';
 import 'package:shop_app/core/configs/assets/app_vectors.dart';
 import 'package:shop_app/domain/auth/entity/user_entity.dart';
+import 'package:shop_app/presentation/cart/pages/cart_page.dart';
 import 'package:shop_app/presentation/choose_mode/pages/choose_theme_page.dart';
 import 'package:shop_app/presentation/home/bloc/user_info_display_cubit.dart';
 import 'package:shop_app/presentation/home/bloc/user_info_display_state.dart';
+import 'package:shop_app/presentation/settings/pages/settings_page.dart';
 
 import '../../../common/helper/navigator/app_navigator.dart';
 import '../../../core/configs/theme/app_colors.dart';
@@ -44,16 +46,21 @@ class HeaderWidget extends StatelessWidget {
   }
 
   Widget _buildProfileImage(BuildContext context, UserEntity user) {
-    return Container(
-      height: 40,
-      width: 40,
-      decoration: BoxDecoration(
-        color: Colors.red,
-        shape: BoxShape.circle,
-        image: DecorationImage(
-          image: user.image.isEmpty
-              ? AssetImage(AppImages.profile)
-              : NetworkImage(user.image),
+    return GestureDetector(
+      onTap: (){
+        AppNavigator.push(context, SettingsPage());
+      },
+      child: Container(
+        height: 40,
+        width: 40,
+        decoration: BoxDecoration(
+          color: Colors.red,
+          shape: BoxShape.circle,
+          image: DecorationImage(
+            image: user.image.isEmpty
+                ? AssetImage(AppImages.profile)
+                : NetworkImage(user.image),
+          ),
         ),
       ),
     );
@@ -83,7 +90,7 @@ class HeaderWidget extends StatelessWidget {
   Widget _buildButtonCard(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        AppNavigator.push(context, ChooseThemePage());
+        AppNavigator.push(context, CartPage());
       },
       child: Container(
         height: 40,

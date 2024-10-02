@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 
 import '../../../core/usecase/usecase.dart';
 import '../../../service_locator.dart';
-import '../repository/order.dart';
+import '../repository/order_repository.dart';
 
 
 class RemoveCartProductUseCase implements UseCase<Either,String> {

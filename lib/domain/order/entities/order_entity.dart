@@ -1,6 +1,6 @@
-import 'package:shop_app/domain/order/entities/product_ordered.dart';
+import 'package:shop_app/domain/order/entities/product_ordered_entity.dart';
 
-import 'order_status.dart';
+import 'order_status_entity.dart';
 
 class OrderEntity {
   final List<ProductOrderedEntity> products;

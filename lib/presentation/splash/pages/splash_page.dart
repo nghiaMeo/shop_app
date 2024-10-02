@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shop_app/core/configs/assets/app_vectors.dart';
 import 'package:shop_app/core/configs/theme/app_colors.dart';
+import 'package:shop_app/presentation/auth/pages/signup_page.dart';
 import 'package:shop_app/presentation/choose_mode/pages/choose_theme_page.dart';
 import 'package:shop_app/presentation/home/pages/home_page.dart';
 import 'package:shop_app/presentation/splash/bloc/splash_cubit.dart';
@@ -19,7 +20,7 @@ class SplashPage extends StatelessWidget {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => ChooseThemePage(),
+              builder: (context) => SignupPage(),
             ),
           );
         }

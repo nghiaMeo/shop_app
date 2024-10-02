@@ -16,7 +16,7 @@ import '../../../domain/auth/usecase/signup_use_case.dart';
 import '../bloc/age_display_cubit.dart';
 import '../bloc/age_selection_cubit.dart';
 
-import '../widget/ages_widget.dart';
+import '../widgets/ages_widget.dart';
 
 class GenderAndAgePage extends StatelessWidget {
   final UserCreationReq userCreationReq;

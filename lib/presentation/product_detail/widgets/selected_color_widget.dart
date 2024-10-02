@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app/common/helper/bottomsheet/app_bottom_sheet.dart';
 import 'package:shop_app/common/helper/selection_mode/is_dark_mode.dart';
 import 'package:shop_app/domain/product/entities/product_entity.dart';
-import 'package:shop_app/presentation/product_detail/widget/product_colors_widget.dart';
+import 'package:shop_app/presentation/product_detail/widgets/product_colors_widget.dart';
 
 import '../../../core/configs/theme/app_colors.dart';
 import '../bloc/product_color_selection_cubit.dart';

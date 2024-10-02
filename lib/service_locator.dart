@@ -8,6 +8,8 @@ import 'package:shop_app/domain/product/repository/product_repository.dart';
 
 
 import 'data/category/repository/category_repository_impl.dart';
+import 'data/order/repository/order_repository_impl.dart';
+import 'data/order/source/order_firebase_service.dart';
 import 'data/product/repository/product_repository_impl.dart';
 import 'data/product/source/product_firebase_service.dart';
 import 'domain/auth/usecase/get_ages_use_case.dart';
@@ -17,6 +19,7 @@ import 'domain/auth/usecase/rest_password_email_use_case.dart';
 import 'domain/auth/usecase/signin_use_case.dart';
 import 'domain/auth/usecase/signup_use_case.dart';
 import 'domain/category/usecases/get_categories_use_case.dart';
+import 'domain/order/repository/order_repository.dart';
 import 'domain/order/usecases/add_to_cart.dart';
 import 'domain/order/usecases/get_cart_products.dart';
 import 'domain/order/usecases/get_orders.dart';
@@ -48,9 +51,11 @@ Future<void> initializeDependencies() async {
       ProductFirebaseServiceImpl()
   );
 
-  // sl.registerSingleton<OrderFirebaseService>(
-  //     OrderFirebaseServiceImpl()
-  // );
+  sl.registerSingleton<OrderFirebaseService>(
+      OrderFirebaseServiceImpl()
+  );
+
+
 
 
   // Repositories
@@ -67,9 +72,9 @@ Future<void> initializeDependencies() async {
       ProductRepositoryImpl()
   );
 
-  // sl.registerSingleton<OrderRepository>(
-  //     OrderRepositoryImpl()
-  // );
+  sl.registerSingleton<OrderRepository>(
+      OrderRepositoryImpl()
+  );
 
 
   // Usecases

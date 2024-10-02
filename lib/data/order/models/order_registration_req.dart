@@ -3,7 +3,7 @@
 
 import 'package:shop_app/data/order/models/product_ordered.dart';
 
-import '../../../domain/order/entities/product_ordered.dart';
+import '../../../domain/order/entities/product_ordered_entity.dart';
 
 class OrderRegistrationReq {
   final List < ProductOrderedEntity > products;

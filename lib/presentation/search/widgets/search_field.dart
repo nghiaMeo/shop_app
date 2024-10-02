@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shop_app/common/helper/selection_mode/is_dark_mode.dart';
+import 'package:shop_app/core/configs/theme/app_colors.dart';
 
 import '../../../common/bloc/product/products_display_cubit.dart';
 import '../../../core/configs/assets/app_vectors.dart';
@@ -12,7 +14,7 @@ class SearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
       padding: const EdgeInsets.symmetric(
           horizontal: 8
       ),
@@ -36,6 +38,8 @@ class SearchField extends StatelessWidget {
             prefixIcon:  SvgPicture.asset(
               AppVectors.search,
               fit: BoxFit.none,
+              color: context.isDarkMode ? AppColors.secondBackgroundLight: AppColors.secondBackgroundDark,
+
             ),
             hintText: 'search'
         ),
