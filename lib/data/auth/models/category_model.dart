@@ -2,10 +2,6 @@ import 'dart:convert';
 
 import '../../../domain/category/entity/category_entity.dart';
 
-
-
-
-
 class CategoryModel {
 
   final String title;
